@@ -1,0 +1,24 @@
+# Jeery - Voice-Activated Virtual Assistant
+
+**Jeery** is a Python-based voice assistant that interacts with users through voice commands. It uses speech recognition and text-to-speech technologies to respond, and it can perform tasks like browsing the web, playing music, fetching news, and chatting with AI using OpenAI's API.
+
+## 🧠 Features
+
+- Voice command activation ("Jeery")
+- Open popular websites: Google, Facebook, Instagram, YouTube
+- Play music from a custom-defined library
+- Fetch latest news headlines via NewsAPI
+- AI response integration using OpenAI GPT-4o
+- Real-time speech recognition and voice output
+
+## 🛠️ Built With
+
+- Python 3.x
+- `speech_recognition`
+- `pyttsx3`
+- `webbrowser`
+- `requests`
+- `openai`
+- Custom `musicLib` module (to be provided by user)
+
+## 📂 Project Structure
