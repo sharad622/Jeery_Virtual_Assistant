@@ -15,29 +15,26 @@ def speck(text):
     engine.runAndWait()
 
 def AIprocess(command):
-     client = OpenAI(
-  api_key="MY API KEY"
-)
+     client = OpenAI(api_key="MY API KEY")
 
-completion = client.chat.completions.create(
-  model="gpt-4o-mini",
-  store=True,
-  messages=[
-    {"role": "user", "content": command}
-  ]
-)
-  
+     completion = client.chat.completions.create(
+          model="gpt-4o-mini",
+          store=True,
+          messages=[
+               {"role": "user", "content": command}
+          ]
+        )
+     return completion.choices[0].message.content  
 
-
-def processCommand(command):
+def processCommand(c):
     if "open google" in c.lower():
-          webbrowser.open("https://google.com")
+          webbrowser.open("https://www.google.com/")
     elif "open facebook" in c.lower():
-          webbrowser.open("https://facebook.com")
+          webbrowser.open("https://www.facebook.com/")
     elif "open instagram" in c.lower():
-          webbrowser.open("https://instagram.com")
+          webbrowser.open("https://www.instagram.com/")
     elif "open youtube" in c.lower():
-          webbrowser.open("https://youtube.com") 
+          webbrowser.open("https://www.youtube.com/") 
     elif c.lower().startswith("play"):
          song = c.lower().split(" ")[1]
          link = musicLib.music[song]
@@ -56,7 +53,7 @@ def processCommand(command):
         output =  AIprocess(command)
         speck(output)
 if __name__=="__main__":
-    speck("Hey Jeery")
+    speck("Hey Jerry")
 
     while True:
         recognizer = speech_recognition.Recognizer()
@@ -71,11 +68,12 @@ if __name__=="__main__":
                      speck("yah")
 
                 with speech_recognition.Microphone() as source:
-                     print("Jeery Active ....")
+                     print("Jerry Active ....")
                      audio = recognizer.listen(source)
-                     command = recognizer.recognize_google(audio)
+                     command = recognizer.recognize_google(audio, language="en-IN")
+
                      
-                     processCommand(c)
+                     processCommand(command)
 
         except speech_recognition.UnknownValueError:
             print("Could not understand the audio") 
